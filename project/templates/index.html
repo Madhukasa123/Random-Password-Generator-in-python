@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Generator</title>
+</head>
+<body>
+    <h1>Password Generator</h1>
+    <button id="generateButton" onclick="generatePassword()">Generate Password</button>
+    <p id="password"></p>
+
+    <script>
+        function generatePassword() {
+            fetch('/generate_password')
+                .then(response => response.text())
+                .then(password => {
+                    document.getElementById('password').textContent = password;
+                })
+                .catch(error => console.error('Error fetching password:', error));
+        }
+    </script>
+</body>
+</html>
